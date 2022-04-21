@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url> http://3.82.130.139:8081/repository/paypay_dev_release/</url>
+	      <url> http://18.234.198.158:8081/repository/paypay_dev_release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.82.130.139:8081/repository/paypay_dev_Snapshot/</url>
+	      <url>http://18.234.198.158:8081/repository/paypay_dev_Snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
