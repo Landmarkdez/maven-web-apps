@@ -1,0 +1,36 @@
+node{
+  def mavenHome = tool name: 'maven3.8.2'
+  stage('1Clone'){
+git credentialsId: 'd09886b1-fd0a-4b01-a554-fb4caa45ccc6', url: 'https://github.com/Landmarkdez/maven-web-apps'
+  }
+  stage('2MavenBuild'){
+    sh "${mavenHome}/bin/mvn clean package"
+   // bat 'mvn package'
+  }
+  stage('3CodeQuality'){
+    sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4UploadArtifacts'){
+    sh "${mavenHome}/bin/mvn deploy"
+  }
+   stage('5.Deploy2Dev'){
+      deploy adapters: [tomcat9(credentialsId: '7329e512-fa90-4d16-948e-e96c16bd4cc6', path: '', url: 'http://34.205.147.3:8080/')], contextPath: null, war: 'target/*war'
+   }
+   stage('7.approval')
+   timeout(time:5, unit: 'DAYS'){
+    input message: 'Please approve for deployment to production'
+   }
+   stage('6.Deploy2Prod'){
+      deploy adapters: [tomcat9(credentialsId: '7329e512-fa90-4d16-948e-e96c16bd4cc6', path: '', url: 'http://34.205.147.3:8080/')], contextPath: null, war: 'target/*war'
+   }
+   stage('9.EmailAlerts'){
+    emailext body: '''Hi
+
+Build status for boa app.
+
+Regards,
+Landmark Technologies''', recipientProviders: [developers(), requestor()], subject: 'Project status', to: 'beresfordmacauley@outlook.com'
+   
+   }
+
+}
