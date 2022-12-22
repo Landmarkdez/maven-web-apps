@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url> http://3.83.172.82:8081/repository/paypay_dev_release/</url>
+	      <url> http://172.31.0.48/repository/tesla-web-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.83.172.82:8081/repository/paypay_dev_Snapshot/</url>
+	      <url>http://172.31.0.48/repository/tesla-fe-Snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
